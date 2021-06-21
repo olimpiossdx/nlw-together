@@ -1,2 +1,0 @@
-# nlw-together
-Semana de 
