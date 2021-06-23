@@ -2,8 +2,8 @@ import React from 'react'
 
 const Room = () => {
   return (
-    <div>
-      Sala
+    <div id="page-room">
+
     </div>
   )
 }
