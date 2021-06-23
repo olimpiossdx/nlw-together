@@ -15,11 +15,11 @@ type AuthContextType = {
   SignInWithGoogleAsync: () => Promise<void>;
 };
 
-type AuthContextTyPE = {
+type AuthContextProps = {
   children: ReactNode;
 };
 
-const AuthContextProvider = (props: AuthContextTyPE) => {
+const AuthContextProvider = (props: AuthContextProps) => {
   const [user, setUser] = useState<User>();
 
   const FillUser = (user: firebase.User | null) => {
