@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import CopyImg from '../assets/images/copy.svg';
-import 'room-copy.scss';
+import '../styles/room-code.scss';
 
 type RoomCodeProps = {
   code: string;
