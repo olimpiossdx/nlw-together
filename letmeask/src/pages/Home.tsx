@@ -1,4 +1,4 @@
-import React, { FormEvent, FormEventHandler, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import LogoIcon from '../assets/images/logo.svg';
 import Illusration from '../assets/images/illustration.svg';
 import GoogleIcon from '../assets/images/google-icon.svg';
