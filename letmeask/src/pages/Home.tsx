@@ -9,6 +9,7 @@ import { useAuth } from '../hooks/ useAuth';
 
 import '../styles/auth.scss';
 import { database } from '../Services/firebase';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Home: React.FC = () => {
   const history = useHistory();
@@ -33,12 +34,12 @@ const Home: React.FC = () => {
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
     if (!roomRef.exists()) {
-      alert('Room does not exists.');
+      toast.error('Room does not exists.');
       return;
     };
 
     if (roomRef.val().endedAt) {
-      alert('Room already closed.');
+      toast.error('Room already closed.');
       return;
     };
 
@@ -46,6 +47,7 @@ const Home: React.FC = () => {
   };
 
   return (<div id='page-auth'>
+    <div><Toaster /></div>
     <aside>
       <img src={Illusration} alt="Ilustração simbolizando perguntas e respostas" />
       <strong>Crie salas de Q&amp;A ao-vivo</strong>

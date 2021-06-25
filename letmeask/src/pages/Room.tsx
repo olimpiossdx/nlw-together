@@ -1,5 +1,5 @@
 import { FC, FormEvent, useState } from 'react';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 import LogoImg from '../assets/images/logo.svg';
 import Button from '../componentes/Button';
@@ -29,9 +29,7 @@ const Room: FC = () => {
     };
 
     if (!user) {
-      //TODO: ADICIONAR LIB react hot-toast - toast('You must be logged int')
-      // throw new Error('You must be logged int');
-      toast('You must be logged int');
+      toast.error('You must be logged int.');
       return;
     };
 
@@ -61,6 +59,7 @@ const Room: FC = () => {
   };
 
   return (<div id='page-room'>
+    <div><Toaster /></div>
     <header>
       <div className='content'>
         <img src={LogoImg} alt='letmeask' />
