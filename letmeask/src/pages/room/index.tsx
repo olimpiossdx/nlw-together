@@ -103,7 +103,6 @@ const Room: FC = () => {
             <h5>Nenhuma pergunta por aqui...</h5>
             <p>Faça seu login e seja a primeira pessoa a fazer uma pergunta!</p>
           </div>)}
-
       </div>
     </main>
   </div >);

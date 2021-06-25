@@ -54,6 +54,7 @@ const AdminRoom: FC = () => {
   const handleDeleteQuestionAsync = async (questionId: string) => {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
     setQuestionId('');
+    handleShowModal();
   };
 
   const handleDelete = (questionId: string) => {
