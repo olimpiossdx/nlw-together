@@ -1,16 +1,17 @@
 import { FC, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import LogoImg from '../assets/images/logo.svg';
-import Button from '../componentes/Button';
-import Question from '../componentes/Question/Question';
-import RoomCode from '../componentes/RoomCode';
-import useRoom from '../hooks/useRoom';
-import { database } from '../Services/firebase';
+
 import '../styles/room.scss';
 import DeleteIcon from '../assets/images/delete.svg';
 import CheckIcon from '../assets/images/check.svg';
 import AnswerIcon from '../assets/images/answer.svg';
-import Modal from '../componentes/Modal';
+import Button from '../../componentes/Button';
+import Modal from '../../componentes/Modal';
+import Question from '../../componentes/Question/Question';
+import RoomCode from '../../componentes/RoomCode';
+import useRoom from '../../hooks/useRoom';
+import { database } from '../../Services/firebase';
 
 type AdminRoomParms = {
   id: string;

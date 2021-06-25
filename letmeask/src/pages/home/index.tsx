@@ -2,14 +2,13 @@ import React, { FormEvent, useState } from 'react';
 import LogoIcon from '../assets/images/logo.svg';
 import Illusration from '../assets/images/illustration.svg';
 import GoogleIcon from '../assets/images/google-icon.svg';
-
-import Button from '../componentes/Button';
 import { useHistory } from 'react-router-dom';
-import { useAuth } from '../hooks/ useAuth';
 
 import '../styles/auth.scss';
-import { database } from '../Services/firebase';
 import toast, { Toaster } from 'react-hot-toast';
+import Button from '../../componentes/Button';
+import { useAuth } from '../../hooks/ useAuth';
+import { database } from '../../Services/firebase';
 
 const Home: React.FC = () => {
   const history = useHistory();

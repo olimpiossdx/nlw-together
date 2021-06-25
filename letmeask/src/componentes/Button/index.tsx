@@ -7,9 +7,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const Button: React.FC<ButtonProps> = ({ isOutlined = false, ...props }) => {
-  return (
-    <button className={`button ${isOutlined ? 'outlined' : ''}`} {...props} />
-  );
+  return (<button className={`button ${isOutlined ? 'outlined' : ''}`} {...props} />);
 };
 
 export default Button

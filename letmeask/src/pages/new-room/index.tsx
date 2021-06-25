@@ -4,10 +4,10 @@ import LogoIcon from '../assets/images/logo.svg';
 import Illusration from '../assets/images/illustration.svg';
 
 import '../styles/auth.scss';
-import Button from '../componentes/Button';
-import { Link, useHistory } from 'react-router-dom';
-import { database } from '../Services/firebase';
-import { useAuth } from '../hooks/ useAuth';
+import { useHistory, Link } from 'react-router-dom';
+import Button from '../../componentes/Button';
+import { useAuth } from '../../hooks/ useAuth';
+import { database } from '../../Services/firebase';
 
 const NewRoom: React.FC = () => {
   const { user } = useAuth();

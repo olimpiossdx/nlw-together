@@ -1,13 +1,13 @@
 import { FC, FormEvent, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
+import Button from '../../componentes/Button';
+import Question from '../../componentes/Question/Question';
+import RoomCode from '../../componentes/RoomCode';
+import { useAuth } from '../../hooks/ useAuth';
+import useRoom from '../../hooks/useRoom';
+import { database } from '../../Services/firebase';
 import LogoImg from '../assets/images/logo.svg';
-import Button from '../componentes/Button';
-import Question from '../componentes/Question/Question';
-import RoomCode from '../componentes/RoomCode';
-import { useAuth } from '../hooks/ useAuth';
-import useRoom from '../hooks/useRoom';
-import { database } from '../Services/firebase';
 import '../styles/room.scss';
 
 type RoomParms = {
