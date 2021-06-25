@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import LogoImg from '../assets/images/logo.svg';
 import Button from '../componentes/Button';
@@ -10,6 +10,7 @@ import '../styles/room.scss';
 import DeleteIcon from '../assets/images/delete.svg';
 import CheckIcon from '../assets/images/check.svg';
 import AnswerIcon from '../assets/images/answer.svg';
+import Modal from '../componentes/Modal';
 
 type AdminRoomParms = {
   id: string;
@@ -20,6 +21,13 @@ const AdminRoom: FC = () => {
   const params = useParams<AdminRoomParms>();
   const roomId = params.id;
   const { questions, title } = useRoom(roomId);
+  const [showModal, setshowModal] = useState(false);
+  const [questionId, setQuestionId] = useState('');
+
+
+  const handleShowModal = () => {
+    setshowModal(!showModal);
+  };
 
   const hanldeEndRoom = async () => {
     await database.ref(`rooms/${roomId}`).update({
@@ -42,10 +50,15 @@ const AdminRoom: FC = () => {
   };
 
   const handleDeleteQuestionAsync = async (questionId: string) => {
-    //TODO: pesquisar sobre o react-modal no reactjs
-    if (window.confirm('Tem certeza que você desejs excluir esta pergunta?')) {
-      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
-    };
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
+    setQuestionId('');
+  };
+
+
+
+  const handleDelete = (questionId: string) => {
+    handleShowModal();
+    setQuestionId(questionId);
   };
 
 
@@ -59,6 +72,16 @@ const AdminRoom: FC = () => {
         </div>
       </div>
     </header>
+
+    <Modal
+      isOpen={showModal}
+      onRequestClose={handleShowModal}
+      onConfirm={() => handleDeleteQuestionAsync(questionId)}
+      title='Encerrar sala' buttonText='modal'
+      contentLabel='teste'
+      buttonTitleConfirm='Sim, encerrar' >
+      Tem certeza que você desejs excluir esta pergunta?
+    </Modal>
 
     <main className='content'>
       <div className='room-title'>
@@ -80,7 +103,7 @@ const AdminRoom: FC = () => {
             </button>
           </>)}
 
-          <button type='button' onClick={() => handleDeleteQuestionAsync(question.id)}>
+          <button type='button' onClick={() => handleDelete(question.id)}>
             <img src={DeleteIcon} alt='remover pergunta' />
           </button>
 

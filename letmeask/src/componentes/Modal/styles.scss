@@ -1,0 +1,110 @@
+.Modal {
+  position: absolute;
+  width: 590px;
+  height: 362px;
+  left: 425px;
+  top: 223px;
+  background-color: #F8F8F8;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color:  rgba(0, 0, 0, 0.75);
+}
+
+.content {
+  display: grid;
+}
+
+.content-header{
+  display: grid;
+  padding: 12px;
+  align-items: center;
+
+  .content-header-title{
+    position: absolute;
+    left: 36.1%;
+    right: 36.1%;
+    top: 37.57%;
+    bottom: 53.04%;
+    
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 34px;
+    text-align: center;
+    color: #29292E;
+  }
+
+  .content-header-close-modal{
+    background-color: #F8F8F8;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    left: 45.93%;
+    right: 45.93%;
+    top: 17.68%;
+    bottom: 69.06%;
+  }
+}
+
+
+.content-body{
+position: absolute;
+right: 20.68%;
+top: 50.28%;
+bottom: 42.54%;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 26px;
+text-align: center;
+color: #737380;
+}
+
+.content-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  
+  position: absolute;
+  width: 299px;
+  height: 50px;
+  left: calc(50% - 299px/2 + 0.5px);
+  top: calc(50% - 50px/2 + 92px);
+  gap: 8px;
+
+  .content-footer-cancelar{
+    font-family: Roboto;
+    background: #DBDCDD;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    color: #737380;
+    padding: 14px 32px 15px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .content-footer-confirmar{
+    font-family: Roboto;
+    background: #E73F5D;
+    border: none;
+    border-radius: 8px;
+    color: #FEFEFE;
+    padding: 14px 32px 15px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
