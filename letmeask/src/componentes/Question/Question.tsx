@@ -13,7 +13,7 @@ type QuestionProps = {
 };
 
 const Question: FC<QuestionProps> = ({ children, content, author, isAnswered = false, isHighLighted = false }) => {
-  return (<div className={`question ${isAnswered ? 'answered' : ''} ${isHighLighted ? 'highLighted' : ''}`}>
+  return (<div className={cx('question', { answered: isAnswered }, { highLighted: isHighLighted && !isAnswered })}  >
     <p>{content}</p>
     <footer>
       <div className='user-info'>

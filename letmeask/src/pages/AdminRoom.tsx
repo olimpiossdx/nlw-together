@@ -31,7 +31,7 @@ const AdminRoom: FC = () => {
     history.push('/');
   };
 
-  const handleCheck0QuestionAsAnsweredAsync = async (questionId: string) => {
+  const handleCheckQuestionAsAnsweredAsync = async (questionId: string) => {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
       isAnswered: true
     });
@@ -69,15 +69,18 @@ const AdminRoom: FC = () => {
       </div>
 
       <div className='questions-list'>
-        {questions.map(question => <Question key={question.id} content={question.content} author={question.author} >
+        {questions.map(question => <Question key={question.id} content={question.content} author={question.author}
+          isAnswered={question.isAnswered} isHighLighted={question.isHighLighted}>
 
-          <button type='button' onClick={() => handleCheck0QuestionAsAnsweredAsync(question.id)}>
-            <img src={CheckIcon} alt='Marca pergunta como responida' />
-          </button>
+          {!question.isAnswered && (<>
+            <button type='button' onClick={() => handleCheckQuestionAsAnsweredAsync(question.id)}>
+              <img src={CheckIcon} alt='Marca pergunta como responida' />
+            </button>
 
-          <button type='button' onClick={() => handleHighLightQuestionAsync(question.id)}>
-            <img src={AnswerIcon} alt='Dar destaque à pergunta' />
-          </button>
+            <button type='button' onClick={() => handleHighLightQuestionAsync(question.id)}>
+              <img src={AnswerIcon} alt='Dar destaque à pergunta' />
+            </button>
+          </>)}
 
           <button type='button' onClick={() => handleDeleteQuestionAsync(question.id)}>
             <img src={DeleteIcon} alt='remover pergunta' />
