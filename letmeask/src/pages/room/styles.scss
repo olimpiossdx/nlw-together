@@ -113,5 +113,41 @@
     .question-list {
       margin-top: 32px;
     }
+
+    .question-empty{
+      position: absolute;
+      width: 310px;
+      height: 243px;
+      left: 40%;
+      right: 40%;
+      top: 476px;
+
+      img {        
+        align-items: center;
+        margin: 16px;
+      }
+
+      h5 { 
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 27px;
+        text-align: center;
+        margin: 8px;
+
+        color: #29292E;
+      }
+
+      p {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 21px;
+        text-align: center; 
+        color: #737380;
+      }
+    }
   }
 }

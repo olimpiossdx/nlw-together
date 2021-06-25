@@ -100,7 +100,7 @@ const AdminRoom: FC = () => {
           <button type='button' onClick={() => handleDelete(question.id)}>
             <img src={DeleteIcon} alt='remover pergunta' />
           </button>
-        </Question>)) : (<div className='queestion-empty'>
+        </Question>)) : (<div className='question-empty'>
           <img src={NoQuestionIcon} alt="nenhuma pergunta por aqui..." />
           <h5>Nenhuma pergunta por aqui...</h5>
           <p>Faça seu login e seja a primeira pessoa a fazer uma pergunta!</p>
