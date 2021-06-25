@@ -4,7 +4,6 @@ import LogoImg from '../assets/images/logo.svg';
 import Button from '../componentes/Button';
 import Question from '../componentes/Question/Question';
 import RoomCode from '../componentes/RoomCode';
-import { useAuth } from '../hooks/ useAuth';
 import useRoom from '../hooks/useRoom';
 import { database } from '../Services/firebase';
 import '../styles/room.scss';
@@ -18,7 +17,6 @@ type AdminRoomParms = {
 
 const AdminRoom: FC = () => {
   const history = useHistory();
-  // const { user } = useAuth();
   const params = useParams<AdminRoomParms>();
   const roomId = params.id;
   const { questions, title } = useRoom(roomId);
