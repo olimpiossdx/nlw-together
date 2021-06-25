@@ -4,10 +4,10 @@ import Illusration from '../assets/images/illustration.svg';
 import GoogleIcon from '../assets/images/google-icon.svg';
 import { useHistory } from 'react-router-dom';
 
-import '../styles/auth.scss';
+import './styles.scss';
 import toast, { Toaster } from 'react-hot-toast';
 import Button from '../../componentes/Button';
-import { useAuth } from '../../hooks/ useAuth';
+import { useAuth } from '../../hooks/useAuth/useAuth';
 import { database } from '../../Services/firebase';
 
 const Home: React.FC = () => {

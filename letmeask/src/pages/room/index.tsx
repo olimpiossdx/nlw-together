@@ -4,11 +4,11 @@ import { useParams } from 'react-router-dom';
 import Button from '../../componentes/Button';
 import Question from '../../componentes/Question/Question';
 import RoomCode from '../../componentes/RoomCode';
-import { useAuth } from '../../hooks/ useAuth';
-import useRoom from '../../hooks/useRoom';
+import { useAuth } from '../../hooks/useAuth/useAuth';
+import useRoom from '../../hooks/useRoom/useRoom';
 import { database } from '../../Services/firebase';
 import LogoImg from '../assets/images/logo.svg';
-import '../styles/room.scss';
+import './styles.scss';
 
 type RoomParms = {
   id: string;
