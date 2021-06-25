@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import toast, { Toaster } from 'react-hot-toast';
 import CopyImg from '../../assets/images/copy.svg';
 import './styles.scss';
 
@@ -8,15 +9,19 @@ type RoomCodeProps = {
 
 const RoomCode: FC<RoomCodeProps> = ({ code }) => {
   const CopyRoomCodeToClipBoard = () => {
+    toast.success('Copied!');
     navigator.clipboard.writeText(code);
   };
 
-  return (<button className='room-code' onClick={CopyRoomCodeToClipBoard}>
-    <div>
-      <img src={CopyImg} alt='copy' />
-    </div>
-    <span>sala #{code}</span>
-  </button>);
+  return (<>
+    <div><Toaster /></div>
+    <button className='room-code' onClick={CopyRoomCodeToClipBoard}>
+      <div>
+        <img src={CopyImg} alt='copy' />
+      </div>
+      <span>sala #{code}</span>
+    </button>
+  </>);
 };
 
 export default RoomCode
