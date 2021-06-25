@@ -9,6 +9,8 @@ import useRoom from '../hooks/useRoom';
 import { database } from '../Services/firebase';
 import '../styles/room.scss';
 import DeleteIcon from '../assets/images/delete.svg';
+import CheckIcon from '../assets/images/check.svg';
+import AnswerIcon from '../assets/images/answer.svg';
 
 type AdminRoomParms = {
   id: string;
@@ -29,12 +31,25 @@ const AdminRoom: FC = () => {
     history.push('/');
   };
 
+  const handleCheck0QuestionAsAnsweredAsync = async (questionId: string) => {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isAnswered: true
+    });
+  };
+
+  const handleHighLightQuestionAsync = async (questionId: string) => {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isHighLighted: true
+    });
+  };
+
   const handleDeleteQuestionAsync = async (questionId: string) => {
     //TODO: pesquisar sobre o react-modal no reactjs
     if (window.confirm('Tem certeza que você desejs excluir esta pergunta?')) {
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
     };
   };
+
 
   return (<div id='page-room'>
     <header>
@@ -55,11 +70,19 @@ const AdminRoom: FC = () => {
 
       <div className='questions-list'>
         {questions.map(question => <Question key={question.id} content={question.content} author={question.author} >
-          <button type='button'
-            onClick={() => handleDeleteQuestionAsync(question.id)}
-          >
+
+          <button type='button' onClick={() => handleCheck0QuestionAsAnsweredAsync(question.id)}>
+            <img src={CheckIcon} alt='Marca pergunta como responida' />
+          </button>
+
+          <button type='button' onClick={() => handleHighLightQuestionAsync(question.id)}>
+            <img src={AnswerIcon} alt='Dar destaque à pergunta' />
+          </button>
+
+          <button type='button' onClick={() => handleDeleteQuestionAsync(question.id)}>
             <img src={DeleteIcon} alt='remover pergunta' />
           </button>
+
         </Question>)}
       </div>
     </main>
