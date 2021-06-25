@@ -6,6 +6,7 @@ import LogoImg from '../../assets/images/logo.svg';
 import DeleteIcon from '../../assets/images/delete.svg';
 import CheckIcon from '../../assets/images/check.svg';
 import AnswerIcon from '../../assets/images/answer.svg';
+import NoQuestionIcon from '../../assets/images/noQuestions.svg';
 
 import Button from '../../componentes/Button';
 import Modal from '../../componentes/Modal';
@@ -85,8 +86,8 @@ const AdminRoom: FC = () => {
         <h1> Sala {title}</h1>
         {questions.length > 0 && <span>{questions.length} pergunta(s).</span>}
       </div>
-      <div className='questions-list'>
-        {questions.map(question => <Question key={question.id} content={question.content} author={question.author}
+      <div className='question-list'>
+        {questions.length > 0 ? (questions.map(question => <Question key={question.id} content={question.content} author={question.author}
           isAnswered={question.isAnswered} isHighLighted={question.isHighLighted}>
           {!question.isAnswered && (<>
             <button type='button' onClick={() => handleCheckQuestionAsAnsweredAsync(question.id)}>
@@ -99,7 +100,11 @@ const AdminRoom: FC = () => {
           <button type='button' onClick={() => handleDelete(question.id)}>
             <img src={DeleteIcon} alt='remover pergunta' />
           </button>
-        </Question>)}
+        </Question>)) : (<div className='queestion-empty'>
+          <img src={NoQuestionIcon} alt="nenhuma pergunta por aqui..." />
+          <h5>Nenhuma pergunta por aqui...</h5>
+          <p>Faça seu login e seja a primeira pessoa a fazer uma pergunta!</p>
+        </div>)}
       </div>
     </main>
   </div >);

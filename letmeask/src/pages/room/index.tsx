@@ -86,6 +86,7 @@ const Room: FC = () => {
       </form>
 
       <div className='question-list'>
+        asd
         {questions.map(question => <Question key={question.id} content={question.content} author={question.author}
           isAnswered={question.isAnswered} isHighLighted={question.isHighLighted}>
           {!question.isAnswered &&
