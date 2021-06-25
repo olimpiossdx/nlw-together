@@ -99,7 +99,7 @@ const Room: FC = () => {
         </Question>)}
       </div>
     </main>
-  </div >)
-}
+  </div >);
+};
 
 export default Room

@@ -24,7 +24,6 @@ const AdminRoom: FC = () => {
   const [showModal, setshowModal] = useState(false);
   const [questionId, setQuestionId] = useState('');
 
-
   const handleShowModal = () => {
     setshowModal(!showModal);
   };
@@ -54,13 +53,10 @@ const AdminRoom: FC = () => {
     setQuestionId('');
   };
 
-
-
   const handleDelete = (questionId: string) => {
     handleShowModal();
     setQuestionId(questionId);
   };
-
 
   return (<div id='page-room'>
     <header>
@@ -82,35 +78,29 @@ const AdminRoom: FC = () => {
       buttonTitleConfirm='Sim, encerrar' >
       Tem certeza que você desejs excluir esta pergunta?
     </Modal>
-
     <main className='content'>
       <div className='room-title'>
         <h1> Sala {title}</h1>
         {questions.length > 0 && <span>{questions.length} pergunta(s).</span>}
       </div>
-
       <div className='questions-list'>
         {questions.map(question => <Question key={question.id} content={question.content} author={question.author}
           isAnswered={question.isAnswered} isHighLighted={question.isHighLighted}>
-
           {!question.isAnswered && (<>
             <button type='button' onClick={() => handleCheckQuestionAsAnsweredAsync(question.id)}>
               <img src={CheckIcon} alt='Marca pergunta como responida' />
             </button>
-
             <button type='button' onClick={() => handleHighLightQuestionAsync(question.id)}>
               <img src={AnswerIcon} alt='Dar destaque à pergunta' />
             </button>
           </>)}
-
           <button type='button' onClick={() => handleDelete(question.id)}>
             <img src={DeleteIcon} alt='remover pergunta' />
           </button>
-
         </Question>)}
       </div>
     </main>
-  </div >)
-}
+  </div >);
+};
 
 export default AdminRoom
