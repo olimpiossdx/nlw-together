@@ -1,6 +1,5 @@
-import { FC, FormEvent, useState } from 'react';
-import toast from 'react-hot-toast';
-import { useParams } from 'react-router-dom';
+import { FC } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import LogoImg from '../assets/images/logo.svg';
 import Button from '../componentes/Button';
 import Question from '../componentes/Question/Question';
@@ -9,45 +8,32 @@ import { useAuth } from '../hooks/ useAuth';
 import useRoom from '../hooks/useRoom';
 import { database } from '../Services/firebase';
 import '../styles/room.scss';
+import DeleteIcon from '../assets/images/delete.svg';
 
 type AdminRoomParms = {
   id: string;
 };
 
 const AdminRoom: FC = () => {
-  const { user } = useAuth();
+  const history = useHistory();
+  // const { user } = useAuth();
   const params = useParams<AdminRoomParms>();
   const roomId = params.id;
   const { questions, title } = useRoom(roomId);
-  const [newQuestion, setNewQuestion] = useState('');
 
-  const handleSendQuestionAsync = async (envet: FormEvent) => {
-    envet.preventDefault();
+  const hanldeEndRoom = async () => {
+    await database.ref(`rooms/${roomId}`).update({
+      endedAt: new Date()
+    });
 
-    if (newQuestion.trim() === '') {
-      return;
+    history.push('/');
+  };
+
+  const handleDeleteQuestionAsync = async (questionId: string) => {
+    //TODO: pesquisar sobre o react-modal no reactjs
+    if (window.confirm('Tem certeza que você desejs excluir esta pergunta?')) {
+      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
     };
-
-    if (!user) {
-      //TODO: ADICIONAR LIB react hot-toast - toast('You must be logged int')
-      // throw new Error('You must be logged int');
-      toast('You must be logged int');
-      return;
-    };
-
-    const question = {
-      content: newQuestion,
-      author: {
-        nome: user.name,
-        avatar: user.avatar
-      },
-      isHighLighted: false,
-      isAnswered: false
-    };
-
-    await database.ref(`rooms/${roomId}/questions`).push(question);
-
-    setNewQuestion('');
   };
 
   return (<div id='page-room'>
@@ -56,19 +42,25 @@ const AdminRoom: FC = () => {
         <img src={LogoImg} alt='letmeask' />
         <div>
           <RoomCode code={roomId} />
-          <Button>Encerrar sala</Button>
+          <Button isOutlined onClick={hanldeEndRoom}>Encerrar sala</Button>
         </div>
       </div>
     </header>
 
-    <main className="content">
+    <main className='content'>
       <div className='room-title'>
         <h1> Sala {title}</h1>
         {questions.length > 0 && <span>{questions.length} pergunta(s).</span>}
       </div>
 
-      <div className="questions-list">
-        {questions.map(question => <Question key={question.id} content={question.content} author={question.author} />)}
+      <div className='questions-list'>
+        {questions.map(question => <Question key={question.id} content={question.content} author={question.author} >
+          <button type='button'
+            onClick={() => handleDeleteQuestionAsync(question.id)}
+          >
+            <img src={DeleteIcon} alt='remover pergunta' />
+          </button>
+        </Question>)}
       </div>
     </main>
   </div >)
