@@ -52,7 +52,7 @@ const useRoom = (roomId: string) => {
         }
       });
 
-      setTitle(databaseRoom.title);
+      setTitle(databaseRoom.titulo);
       setQuestions(parsedQuestions);
     });
 
