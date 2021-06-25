@@ -1,10 +1,11 @@
 import React, { FormEvent, useState } from 'react';
-import LogoIcon from '../assets/images/logo.svg';
-import Illusration from '../assets/images/illustration.svg';
-import GoogleIcon from '../assets/images/google-icon.svg';
 import { useHistory } from 'react-router-dom';
 
 import './styles.scss';
+import LogoIcon from '../../assets/images/logo.svg';
+import Illusration from '../../assets/images/illustration.svg';
+import GoogleIcon from '../../assets/images/google-icon.svg';
+
 import toast, { Toaster } from 'react-hot-toast';
 import Button from '../../componentes/Button';
 import { useAuth } from '../../hooks/useAuth/useAuth';

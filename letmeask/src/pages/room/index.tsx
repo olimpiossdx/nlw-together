@@ -7,7 +7,7 @@ import RoomCode from '../../componentes/RoomCode';
 import { useAuth } from '../../hooks/useAuth/useAuth';
 import useRoom from '../../hooks/useRoom/useRoom';
 import { database } from '../../Services/firebase';
-import LogoImg from '../assets/images/logo.svg';
+import LogoImg from '../../assets/images/logo.svg';
 import './styles.scss';
 
 type RoomParms = {
