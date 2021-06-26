@@ -24,6 +24,7 @@
 <p>
  Aplicação <strong>letmeaks</strong>, um chat em tempo real, apresentando postagem de perguntas. Com isso é possível votar nas perguntas enviadas, o administrador da sala pode ir avaliando as perguntas pelo seu critério ou pela quantidade de 'curtidas' na pergunta e assim podendo marca-lá como respondida. Outra funcionalidade é a possíbilidade de remoção de perguntas pelo administrador.
 </p>
+
 ---
 
 ## 🧪  Tecnologias
