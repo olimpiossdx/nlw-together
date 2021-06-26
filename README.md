@@ -24,7 +24,6 @@
 <p>
  Aplicação <strong>letmeaks</strong>, um chat em tempo real, apresentando postagem de perguntas. Com isso é possível votar nas perguntas enviadas, o administrador da sala pode ir avaliando as perguntas pelo seu critério ou pela quantidade de 'curtidas' na pergunta e assim podendo marca-lá como respondida. Outra funcionalidade é a possíbilidade de remoção de perguntas pelo administrador.
 </p>
-
 ---
 
 ## 🧪  Tecnologias
@@ -35,8 +34,6 @@
 - [React-Router-Dom](https://github.com/ReactTraining/react-router) 
 - [Firebase](https://console.firebase.google.com/) 
 - [Figma](https://www.figma.com/file/NPKKPWcUAK67lBooW0Nd4b/Letmeask-(Copy)?node-id=45%3A3279) 
-
-Ainda foi incrementado no projeto, algumas dicas apresentandas durante as aulas, utilização de toast (notificação) e modal para confirmação na funcionalidade de remoção de perguntas pelo administrador.
 ---
 ## 🚀 Iniciando
 
